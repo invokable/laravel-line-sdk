@@ -16,7 +16,8 @@
         "linecorp/line-bot-sdk": "^10.0||^11.0"
     },
     "require-dev": {
-        "orchestra/testbench": "^10.0"
+        "orchestra/testbench": "^10.0",
+        "laravel/pint": "^1.22"
     },
     "autoload": {
         "psr-4": {
