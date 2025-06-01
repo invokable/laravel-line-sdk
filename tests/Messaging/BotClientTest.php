@@ -13,13 +13,13 @@ use Tests\TestCase;
 
 class BotClientTest extends TestCase
 {
-    public function testBotInstance()
+    public function test_bot_instance()
     {
         $this->assertInstanceOf(MessagingApiApi::class, app(MessagingApiApi::class));
         $this->assertInstanceOf(BotClient::class, app(BotFactory::class));
     }
 
-    public function testBotUsing()
+    public function test_bot_using()
     {
         $bot = app(MessagingApiApi::class);
         $client = new BotClient($bot);
@@ -33,7 +33,7 @@ class BotClientTest extends TestCase
         $this->assertInstanceOf(MessagingApiApi::class, $client->bot());
     }
 
-    public function testMacroable()
+    public function test_macroable()
     {
         Bot::macro('testMacro', function () {
             return 'test';
@@ -42,7 +42,7 @@ class BotClientTest extends TestCase
         $this->assertSame('test', Bot::testMacro());
     }
 
-    public function testBotInfo()
+    public function test_bot_info()
     {
         $this->mock(MessagingApiApi::class, function ($mock) {
             $mock->shouldReceive('getBotInfo')
@@ -53,7 +53,7 @@ class BotClientTest extends TestCase
         $this->assertSame([], Bot::getBotInfo());
     }
 
-    public function testBotAlias()
+    public function test_bot_alias()
     {
         $this->assertInstanceOf(MessagingApiApi::class, BotAlias::bot());
     }
@@ -61,7 +61,7 @@ class BotClientTest extends TestCase
     /**
      * @requires function \Illuminate\Http\Client\PendingRequest::get
      */
-    public function testHttpMacro()
+    public function test_http_macro()
     {
         $this->assertInstanceOf(PendingRequest::class, Http::line());
     }

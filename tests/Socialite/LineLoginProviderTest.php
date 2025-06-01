@@ -14,14 +14,14 @@ use Tests\TestCase;
 
 class LineLoginProviderTest extends TestCase
 {
-    public function testInstance()
+    public function test_instance()
     {
         $provider = Socialite::driver('line-login');
 
         $this->assertInstanceOf(LineLoginProvider::class, $provider);
     }
 
-    public function testRedirect()
+    public function test_redirect()
     {
         $request = m::mock(Request::class);
         $request->shouldReceive('session->put')->andReturn();
@@ -34,7 +34,7 @@ class LineLoginProviderTest extends TestCase
         $this->assertStringStartsWith('https://access.line.me', $response->getTargetUrl());
     }
 
-    public function testUser()
+    public function test_user()
     {
         $request = m::mock(Request::class);
         $request->shouldReceive('input')

@@ -14,15 +14,11 @@ class LineNotifyStub extends Notification
 {
     use Queueable;
 
-    /**
-     * @var string
-     */
     protected string $message;
 
     /**
      * Create a new notification instance.
      *
-     * @param  string  $message
      * @return void
      */
     public function __construct(string $message)
@@ -32,9 +28,6 @@ class LineNotifyStub extends Notification
 
     /**
      * Get the notification's delivery channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array
      */
     public function via(mixed $notifiable): array
     {
@@ -43,10 +36,6 @@ class LineNotifyStub extends Notification
         ];
     }
 
-    /**
-     * @param  mixed  $notifiable
-     * @return LineNotifyMessage
-     */
     public function toLineNotify(mixed $notifiable): LineNotifyMessage
     {
         return LineNotifyMessage::create($this->message);

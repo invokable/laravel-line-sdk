@@ -14,39 +14,39 @@ use Tests\TestCase;
 
 class ReplyMessageTest extends TestCase
 {
-    public function testReplyMessageInstance()
+    public function test_reply_message_instance()
     {
         $this->assertInstanceOf(ReplyMessage::class, Bot::reply('token'));
     }
 
-    public function testReplyMessage()
+    public function test_reply_message()
     {
         $this->mock(MessagingApiApi::class, function ($mock) {
             $mock->shouldReceive('replyMessage')
                 ->once()
-                ->andReturn(new ReplyMessageResponse());
+                ->andReturn(new ReplyMessageResponse);
         });
 
         Bot::reply('token')
             ->message(new TextMessage(['text' => 'test', 'type' => MessageType::TEXT]));
     }
 
-    public function testReplyText()
+    public function test_reply_text()
     {
         $this->mock(MessagingApiApi::class, function ($mock) {
             $mock->shouldReceive('replyMessage')
-                ->andReturn(new ReplyMessageResponse())
+                ->andReturn(new ReplyMessageResponse)
                 ->once();
         });
 
         Bot::reply('token')->text('test');
     }
 
-    public function testReplyTextWith()
+    public function test_reply_text_with()
     {
         $this->mock(MessagingApiApi::class, function ($mock) {
             $mock->shouldReceive('replyMessage')
-                ->andReturn(new ReplyMessageResponse())
+                ->andReturn(new ReplyMessageResponse)
                 ->once();
         });
 
@@ -56,11 +56,11 @@ class ReplyMessageTest extends TestCase
             ->text('a', 'b', 'c');
     }
 
-    public function testReplySticker()
+    public function test_reply_sticker()
     {
         $this->mock(MessagingApiApi::class, function ($mock) {
             $mock->shouldReceive('replyMessage')
-                ->andReturn(new ReplyMessageResponse())
+                ->andReturn(new ReplyMessageResponse)
                 ->once();
         });
 

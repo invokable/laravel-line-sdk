@@ -38,12 +38,12 @@ class WebhookTest extends TestCase
         ]);
     }
 
-    public function testWebhookHandler()
+    public function test_webhook_handler()
     {
         $this->assertInstanceOf(WebhookEventDispatcher::class, app(WebhookHandler::class));
     }
 
-    public function testWebhookEventDispatcher()
+    public function test_webhook_event_dispatcher()
     {
         Event::fake();
 
@@ -62,7 +62,7 @@ class WebhookTest extends TestCase
             ->assertSee(class_basename(WebhookEventDispatcher::class));
     }
 
-    public function testEmptySignature()
+    public function test_empty_signature()
     {
         Event::fake();
 
@@ -76,7 +76,7 @@ class WebhookTest extends TestCase
             ]);
     }
 
-    public function testInvalidSignature()
+    public function test_invalid_signature()
     {
         Event::fake();
 
@@ -90,7 +90,7 @@ class WebhookTest extends TestCase
             ]);
     }
 
-    public function testValidSignatureEmptyEvents()
+    public function test_valid_signature_empty_events()
     {
         $signature = base64_encode(hash_hmac('sha256', json_encode(['test']), config('line.bot.channel_secret'), true));
 
@@ -109,7 +109,7 @@ class WebhookTest extends TestCase
             ]);
     }
 
-    public function testWebhookLogHandler()
+    public function test_webhook_log_handler()
     {
         $this->app->singleton(WebhookHandler::class, WebhookLogHandler::class);
 
@@ -127,7 +127,7 @@ class WebhookTest extends TestCase
             ->assertSee(class_basename(WebhookLogHandler::class));
     }
 
-    public function testWebhookNullHandler()
+    public function test_webhook_null_handler()
     {
         $this->app->singleton(WebhookHandler::class, WebhookNullHandler::class);
 

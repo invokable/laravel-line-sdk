@@ -12,10 +12,10 @@ use Revolution\Line\Messaging\Concerns\Replyable;
 class BotClient implements BotFactory
 {
     use EventParser;
-    use Replyable;
     use Macroable {
         __call as macroCall;
     }
+    use Replyable;
 
     public function __construct(
         protected MessagingApiApi $bot

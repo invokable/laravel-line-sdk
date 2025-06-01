@@ -37,7 +37,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            //'LINE' => Bot::class,
+            // 'LINE' => Bot::class,
         ];
     }
 

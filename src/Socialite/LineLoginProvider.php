@@ -46,7 +46,7 @@ class LineLoginProvider extends AbstractProvider implements ProviderInterface
     protected ?string $email = null;
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getAuthUrl($state): string
     {
@@ -54,7 +54,7 @@ class LineLoginProvider extends AbstractProvider implements ProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getTokenUrl(): string
     {
@@ -62,7 +62,7 @@ class LineLoginProvider extends AbstractProvider implements ProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function getAccessTokenResponse($code)
     {
@@ -111,7 +111,7 @@ class LineLoginProvider extends AbstractProvider implements ProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function getUserByToken($token)
     {
@@ -128,11 +128,11 @@ class LineLoginProvider extends AbstractProvider implements ProviderInterface
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function mapUserToObject(array $user): User
     {
-        return (new User())->setRaw($user)->map(
+        return (new User)->setRaw($user)->map(
             [
                 'id' => $user['userId'],
                 'nickname' => $user['displayName'] ?? '',

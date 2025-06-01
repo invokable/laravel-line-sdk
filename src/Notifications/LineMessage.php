@@ -29,7 +29,7 @@ final class LineMessage implements Arrayable
 
     public static function create(?string $text = null, ?string $name = null, ?string $icon = null): self
     {
-        return (new self())
+        return (new self)
             ->unless(empty($name) && empty($icon), fn (self $message) => $message->withSender($name, $icon))
             ->unless(empty($text), fn (self $message) => $message->text($text));
     }
@@ -54,7 +54,7 @@ final class LineMessage implements Arrayable
     public function text(string $text): self
     {
         return $this->message(
-            (new TextMessage())
+            (new TextMessage)
                 ->setType(MessageType::TEXT)
                 ->setText($text)
         );
@@ -66,7 +66,7 @@ final class LineMessage implements Arrayable
     public function sticker(int $package, int $sticker): self
     {
         return $this->message(
-            (new StickerMessage())
+            (new StickerMessage)
                 ->setType(MessageType::STICKER)
                 ->setPackageId($package)
                 ->setStickerId($sticker)
@@ -79,7 +79,7 @@ final class LineMessage implements Arrayable
     public function image(string $original, string $preview): self
     {
         return $this->message(
-            (new ImageMessage())
+            (new ImageMessage)
                 ->setType(MessageType::IMAGE)
                 ->setOriginalContentUrl($original)
                 ->setPreviewImageUrl($preview)
@@ -92,7 +92,7 @@ final class LineMessage implements Arrayable
     public function video(string $original, string $preview): self
     {
         return $this->message(
-            (new VideoMessage())
+            (new VideoMessage)
                 ->setType(MessageType::VIDEO)
                 ->setOriginalContentUrl($original)
                 ->setPreviewImageUrl($preview)

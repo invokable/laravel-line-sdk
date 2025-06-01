@@ -11,16 +11,16 @@ use Tests\TestCase;
 
 class LineChannelTest extends TestCase
 {
-    public function testLineChannel()
+    public function test_line_channel()
     {
         Bot::shouldReceive('pushMessage')->once();
 
-        $channel = new LineChannel();
+        $channel = new LineChannel;
 
-        $notifiable = (new AnonymousNotifiable())
+        $notifiable = (new AnonymousNotifiable)
             ->route('line', 'test');
 
         $channel->send($notifiable, new LineNotificationStub('test'));
-        $channel->send(new TestNotifiableStub(), new LineNotificationStub('test'));
+        $channel->send(new TestNotifiableStub, new LineNotificationStub('test'));
     }
 }

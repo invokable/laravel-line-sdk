@@ -19,7 +19,7 @@ use Tests\TestCase;
 
 class LineMessageTest extends TestCase
 {
-    public function testLineMessage()
+    public function test_line_message()
     {
         $message = LineMessage::create('test1')
             ->text('test2')
@@ -36,14 +36,14 @@ class LineMessageTest extends TestCase
 
     public function test_location_message()
     {
-        $location = (new LocationMessage())
+        $location = (new LocationMessage)
             ->setType(MessageType::LOCATION)
             ->setTitle('title')
             ->setAddress('address')
             ->setLatitude(0.0)
             ->setLongitude(0.0);
 
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->text('text')
             ->message($location);
 
@@ -62,7 +62,7 @@ class LineMessageTest extends TestCase
 
     public function test_sender()
     {
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->withSender(name: 'name', icon: 'icon')
             ->text('test');
 
@@ -73,7 +73,7 @@ class LineMessageTest extends TestCase
 
     public function test_sender_wrong_order()
     {
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->text('test')
             ->withSender(name: 'name', icon: 'icon');
 
@@ -83,7 +83,7 @@ class LineMessageTest extends TestCase
 
     public function test_sender_name()
     {
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->withSender(name: 'name')
             ->text('test');
 
@@ -92,7 +92,7 @@ class LineMessageTest extends TestCase
 
     public function test_sender_icon()
     {
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->withSender(icon: 'icon')
             ->text('test');
 
@@ -101,7 +101,7 @@ class LineMessageTest extends TestCase
 
     public function test_quick_reply()
     {
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->withQuickReply($quick = new QuickReply(['items' => []]))
             ->text('test');
 
@@ -113,11 +113,11 @@ class LineMessageTest extends TestCase
         $bubble = new FlexBubble(json_decode(file_get_contents(__DIR__.'/./Fixtures/flex-simulator/bubble.json'),
             true));
 
-        $flex = (new FlexMessage())
+        $flex = (new FlexMessage)
             ->setType(MessageType::FLEX)
             ->setContents($bubble);
 
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->message($flex);
 
         $this->assertSame('bubble', $message->toArray()['messages'][0]->getContents()->getType());
@@ -128,11 +128,11 @@ class LineMessageTest extends TestCase
         $carousel = new FlexCarousel(json_decode(file_get_contents(__DIR__.'/./Fixtures/flex-simulator/carousel.json'),
             true));
 
-        $flex = (new FlexMessage())
+        $flex = (new FlexMessage)
             ->setType(MessageType::FLEX)
             ->setContents($carousel);
 
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->message($flex);
 
         $this->assertSame('carousel', $message->toArray()['messages'][0]->getContents()->getType());
@@ -140,28 +140,28 @@ class LineMessageTest extends TestCase
 
     public function test_text_v2()
     {
-        $text_v2 = new TextMessageV2();
+        $text_v2 = new TextMessageV2;
         $text_v2->setType('textV2');
 
-        $user_target = new UserMentionTarget();
+        $user_target = new UserMentionTarget;
         $user_target->setType(MentioneeType::TYPE_USER);
         $user_target->setUserId('test');
-        //dump($user_target->__toString());
+        // dump($user_target->__toString());
 
-        $user = new MentionSubstitutionObject();
+        $user = new MentionSubstitutionObject;
         $user->setType('mention');
         $user->setMentionee($user_target);
-        //dump($user->__toString());
+        // dump($user->__toString());
 
-        $emoji = new EmojiSubstitutionObject();
+        $emoji = new EmojiSubstitutionObject;
         $emoji->setType('emoji');
         $emoji->setProductId('p');
         $emoji->setEmojiId('e');
 
-        $everyone_target = new AllMentionTarget();
+        $everyone_target = new AllMentionTarget;
         $everyone_target->setType(MentioneeType::TYPE_ALL);
 
-        $everyone = new MentionSubstitutionObject();
+        $everyone = new MentionSubstitutionObject;
         $everyone->setType('mention');
         $everyone->setMentionee($everyone_target);
 
@@ -173,12 +173,12 @@ class LineMessageTest extends TestCase
 
         $text_v2->setText('{user} {emoji} {everyone}');
 
-        //dump($text_v2->__toString());
+        // dump($text_v2->__toString());
 
-        $message = (new LineMessage())
+        $message = (new LineMessage)
             ->message($text_v2);
 
-        //dump($message->toArray());
+        // dump($message->toArray());
 
         $this->assertSame('textV2', $message->toArray()['messages'][0]->getType());
     }

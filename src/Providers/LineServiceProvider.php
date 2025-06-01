@@ -33,7 +33,7 @@ class LineServiceProvider extends ServiceProvider
     protected function registerBot(): void
     {
         $this->app->scoped(MessagingApiApi::class, function ($app) {
-            $config = (new Configuration())->setAccessToken(config('line.bot.channel_token'));
+            $config = (new Configuration)->setAccessToken(config('line.bot.channel_token'));
 
             return new MessagingApiApi(config: $config);
         });
