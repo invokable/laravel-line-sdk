@@ -1,0 +1,13 @@
+{
+    "preset": "laravel",
+    "rules": {
+        "no_unused_imports": false,
+        "php_unit_method_casing": false,
+        "new_with_parentheses": false,
+        "ordered_traits": false,
+        "phpdoc_tag_type": false,
+        "single_line_comment_spacing": false,
+        "no_superfluous_phpdoc_tags": false,
+        "unary_operator_spaces": false
+    }
+}
