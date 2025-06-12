@@ -65,9 +65,7 @@ php artisan vendor:publish --tag=line-config
 
 ### Create new Laravel project
 ```
-# Docker
-curl -s "https://laravel.build/line-bot" | bash
-
+laravel new line-bot
 cd ./line-bot
 composer require revolution/laravel-line-sdk
 ```
@@ -100,7 +98,7 @@ Bot returns same message.
 - [Notifications](./docs/notification.md)
 
 ## Demo
-https://github.com/kawax/laravel-line-project
+https://github.com/invokable/laravel-line-project
 
 ## LICENSE
 MIT
