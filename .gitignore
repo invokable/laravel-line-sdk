@@ -1,2 +1,42 @@
-vendor
+# Dependencies
+vendor/
+node_modules/
+
+# Composer
 composer.lock
+
+# Build artifacts  
+build/
+dist/
+
+# Testing
+.phpunit.result.cache
+coverage/
+.coverage/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+
+# Allow .github/copilot-instructions.md specifically
+!.github/copilot-instructions.md

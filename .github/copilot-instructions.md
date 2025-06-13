@@ -42,6 +42,31 @@ The project follows Laravel package conventions with several key architectural l
 **Authentication System** (`src/Socialite/`):
 - `LineLoginProvider.php` - Socialite provider for LINE Login OAuth flow
 
+## Package Configuration and Setup
+
+### Package Installation and Setup
+
+**Installation**:
+```bash
+composer require revolution/laravel-line-sdk
+```
+
+**Publishing Configuration**:
+```bash
+# Publish configuration file
+php artisan vendor:publish --tag=line-config
+
+# Publish event listener stubs
+php artisan vendor:publish --tag=line-listeners
+```
+
+**Required Setup**:
+1. Create LINE Developer Console channels (Messaging API + LINE Login)
+2. Configure environment variables in `.env`
+3. Set webhook URL in LINE Developer Console: `https://yourapp.com/line/webhook`
+4. Set LINE Login callback URL: `https://yourapp.com/auth/line/callback`
+5. Publish and customize event listeners for webhook handling
+
 ### Directory Structure
 
 ```
@@ -65,109 +90,205 @@ The project follows Laravel package conventions with several key architectural l
 ### Key Configuration Files
 
 **Environment Configuration**:
-```
-LINE_BOT_CHANNEL_TOKEN=your_channel_token
-LINE_BOT_CHANNEL_SECRET=your_channel_secret  
+```env
+# LINE Messaging API (Bot Channel)
+LINE_BOT_CHANNEL_TOKEN=your_channel_access_token
+LINE_BOT_CHANNEL_SECRET=your_channel_secret
+
+# LINE Login Channel
 LINE_LOGIN_CLIENT_ID=your_client_id
 LINE_LOGIN_CLIENT_SECRET=your_client_secret
-LINE_LOGIN_REDIRECT=https://yourapp.com/callback
+LINE_LOGIN_REDIRECT=https://yourapp.com/auth/line/callback
+
+# Optional webhook customization
+LINE_BOT_WEBHOOK_PATH=line/webhook
+LINE_BOT_WEBHOOK_ROUTE=line.webhook
+LINE_BOT_WEBHOOK_DOMAIN=your-domain.com
+LINE_BOT_WEBHOOK_MIDDLEWARE=throttle
 ```
 
 **Main Configuration** (`config/line.php`):
-- Bot API credentials and webhook settings
-- LINE Login OAuth configuration
-- Route and middleware customization
+- **Bot settings**: Channel token, secret, webhook path, route name, domain, and middleware
+- **Login settings**: Client ID, secret, and OAuth redirect URL
+- **Webhook routing**: Customizable path (`/line/webhook` by default) with signature validation
+- **Middleware configuration**: Default throttling, customizable per environment
+
+## Usage Examples and API Reference
 
 ### Core Classes and Functions
 
 **Primary API Interface**:
 ```php
-// Facade for LINE Messaging API
-Bot::reply($token)->text('Hello World');
+// Bot Facade - LINE Messaging API
+Bot::reply($replyToken)->text('Hello World');
+Bot::reply($replyToken)->sticker(446, 1988);
 Bot::pushMessage($pushRequest);
 Bot::parseEvent($request);
 
 // Notification Channel
 $user->notify(new LineNotification());
+Notification::route('line', $userId)->notify(new LineNotification());
 
-// Socialite Integration  
+// Socialite Integration
 Socialite::driver('line-login')->redirect();
+$user = Socialite::driver('line-login')->user();
+```
+
+**Fluent Message Builders**:
+```php
+// Reply messages (requires reply token from webhook events)
+Bot::reply($replyToken)
+    ->text('Hello!')
+    ->sticker(446, 1988)
+    ->image('https://example.com/image.jpg', 'https://example.com/preview.jpg');
+
+// Notification messages (push to any user)
+LineMessage::create()
+    ->text('Notification message')
+    ->withSender('Bot Name', 'https://example.com/icon.png')
+    ->withQuickReply($quickReplyObject);
+```
+
+**Event Handling**:
+```php
+// Default webhook event dispatcher
+class MessageListener
+{
+    public function handle(MessageEvent $event): void
+    {
+        $message = $event->getMessage();
+        $replyToken = $event->getReplyToken();
+        
+        if ($message instanceof TextMessageContent) {
+            Bot::reply($replyToken)->text('Echo: ' . $message->getText());
+        }
+    }
+}
 ```
 
 **Key Components**:
-- `Revolution\Line\Messaging\BotClient` - Main API client wrapper
-- `Revolution\Line\Messaging\ReplyMessage` - Message builder for replies
-- `Revolution\Line\Notifications\LineMessage` - Message builder for notifications
-- `Revolution\Line\Messaging\Http\Actions\WebhookEventDispatcher` - Webhook event processor
+- `Revolution\Line\Messaging\BotClient` - Main API client wrapper extending MessagingApiApi
+- `Revolution\Line\Messaging\ReplyMessage` - Fluent builder for webhook reply messages
+- `Revolution\Line\Notifications\LineMessage` - Fluent builder for push notification messages
+- `Revolution\Line\Messaging\Http\Actions\WebhookEventDispatcher` - Default webhook event processor
+- `Revolution\Line\Socialite\LineLoginProvider` - Socialite provider for LINE Login OAuth
+
+## Development and Testing
 
 ### Testing and Development
 
 **Testing Infrastructure**:
-- PHPUnit configuration with multiple PHP version matrix (8.2, 8.3, 8.4)
-- GitHub Actions for automated testing and linting
-- Code coverage reporting via Clover XML
-- Laravel Pint for code style enforcement
+- **PHPUnit**: Comprehensive test suite with 33+ tests covering facades, notifications, and integrations
+- **PHP Version Matrix**: Tests run on PHP 8.2, 8.3, and 8.4 for broad compatibility
+- **Code Coverage**: Clover XML format reporting with Xdebug integration
+- **Laravel Pint**: Automated code style enforcement following Laravel conventions
+- **Orchestra Testbench**: Laravel package testing framework for isolated testing
+
+**CI/CD Pipeline** (`.github/workflows/`):
+- **`tests.yml`**: Automated testing across PHP versions on push/PR
+- **`lint.yml`**: Code style validation with Laravel Pint
+- **`copilot-setup-steps.yml`**: AI-assisted development workflow setup
 
 **Development Workflow**:
-1. Tests run automatically on push/PR via GitHub Actions
-2. Code style enforced via Laravel Pint
-3. Multiple PHP/Laravel version compatibility testing
-4. Webhook signature validation for security
+1. **Automated Testing**: All tests run automatically on push/PR via GitHub Actions
+2. **Code Quality**: Laravel Pint enforces consistent code style across the codebase
+3. **Multi-Version Support**: Ensures compatibility across PHP 8.2+ and Laravel 11+
+4. **Security**: Webhook signature validation prevents unauthorized requests
+5. **Coverage Reporting**: Integration with Qlty for maintainability and coverage metrics
+
+**Local Development**:
+```bash
+# Install dependencies
+composer install
+
+# Run tests
+vendor/bin/phpunit
+
+# Check code style
+vendor/bin/pint --test
+
+# Fix code style
+vendor/bin/pint
+```
+
+## Reference Documentation
 
 ## Glossary of Codebase-Specific Terms
 
-**Bot** - Primary facade (`Revolution\Line\Facades\Bot`) providing static access to LINE Messaging API functionality
+**Bot** - Primary facade (`Revolution\Line\Facades\Bot`) providing static access to LINE Messaging API functionality including reply, push, and event parsing
 
-**BotClient** - Core wrapper class (`src/Messaging/BotClient.php`) that encapsulates MessagingApiApi and provides extensibility
+**BotClient** - Core wrapper class (`src/Messaging/BotClient.php`) that encapsulates the LINE MessagingApiApi client and provides extensibility through macros
 
-**BotFactory** - Contract (`src/Contracts/BotFactory.php`) defining interface for creating bot client instances
+**BotFactory** - Contract (`src/Contracts/BotFactory.php`) defining interface for creating bot client instances with methods for bot(), botUsing(), reply(), and parseEvent()
 
-**LineChannel** - Laravel notification channel (`src/Notifications/LineChannel.php`) for dispatching notifications via LINE
+**EventParser** - Trait (`src/Messaging/Concerns/EventParser.php`) providing event parsing functionality from LINE webhook requests
 
-**LineMessage** - Fluent builder (`src/Notifications/LineMessage.php`) for constructing notification messages with text, stickers, images
+**LineChannel** - Laravel notification channel (`src/Notifications/LineChannel.php`) for dispatching notifications via LINE push messages
 
-**LineLoginProvider** - Socialite provider (`src/Socialite/LineLoginProvider.php`) implementing LINE Login OAuth flow
+**LineMessage** - Fluent builder (`src/Notifications/LineMessage.php`) for constructing notification messages with text, stickers, images, videos, and custom sender/quick reply options
 
-**LineSocialiteServiceProvider** - Service provider extending Socialite with 'line-login' driver registration
+**LineLoginProvider** - Socialite provider (`src/Socialite/LineLoginProvider.php`) implementing LINE Login OAuth flow with scope and parameter customization
 
-**LineServiceProvider** - Primary service provider registering core LINE API client and webhook handler bindings
+**LineSocialiteServiceProvider** - Service provider (`src/Providers/LineSocialiteServiceProvider.php`) extending Socialite with 'line-login' driver registration
 
-**MacroServiceProvider** - Service provider adding `Http::line()` macro for pre-configured LINE API HTTP requests
+**LineServiceProvider** - Primary service provider (`src/Providers/LineServiceProvider.php`) registering core LINE API client, bot factory, and webhook handler bindings
 
-**MessageListener** - Default event listener handling incoming LINE message events (published to `app/Listeners/Line/`)
+**MacroServiceProvider** - Service provider (`src/Providers/MacroServiceProvider.php`) adding `Http::line()` macro for pre-configured LINE API HTTP requests with authentication
 
-**ReplyMessage** - Fluent builder (`src/Messaging/ReplyMessage.php`) for constructing reply messages with chaining methods
+**MessageListener** - Default event listener template (`stubs/listeners/Line/MessageListener.php`) handling incoming LINE message events with text and sticker responses
 
-**Replyable** - Trait (`src/Messaging/Concerns/Replyable.php`) providing `reply()` factory method for other classes
+**ReplyMessage** - Fluent builder (`src/Messaging/ReplyMessage.php`) for constructing reply messages with chaining methods for text, stickers, images, and quick replies
 
-**RouteServiceProvider** - Service provider registering `/line/webhook` route with ValidateSignature middleware
+**Replyable** - Trait (`src/Messaging/Concerns/Replyable.php`) providing `reply()` factory method for creating ReplyMessage instances
 
-**ValidateSignature** - Middleware (`src/Messaging/Http/Middleware/ValidateSignature.php`) verifying LINE webhook request authenticity
+**RouteServiceProvider** - Service provider (`src/Providers/RouteServiceProvider.php`) registering `/line/webhook` route with ValidateSignature middleware and customizable path/domain
 
-**WebhookController** - Single-action controller (`src/Messaging/Http/Controllers/WebhookController.php`) handling webhook requests
+**ValidateSignature** - Middleware (`src/Messaging/Http/Middleware/ValidateSignature.php`) verifying LINE webhook request authenticity using channel secret
 
-**WebhookEventDispatcher** - Default webhook handler dispatching parsed events to Laravel's event system
+**WebhookController** - Single-action controller (`src/Messaging/Http/Controllers/WebhookController.php`) handling webhook requests by delegating to WebhookHandler implementation
+
+**WebhookEventDispatcher** - Default webhook handler (`src/Messaging/Http/Actions/WebhookEventDispatcher.php`) dispatching parsed events to Laravel's event system
 
 **WebhookHandler** - Contract (`src/Contracts/WebhookHandler.php`) defining interface for custom webhook processing logic
 
-**channel_token** - LINE Bot API access token from config('line.bot.channel_token') for API authentication
+**WebhookLogHandler** - Alternative webhook handler (`src/Messaging/Http/Actions/WebhookLogHandler.php`) for logging webhook events
 
-**line-config** - Artisan publishing tag for `config/line.php` configuration file
+**WebhookNullHandler** - No-op webhook handler (`src/Messaging/Http/Actions/WebhookNullHandler.php`) for disabling webhook processing
 
-**line-listeners** - Artisan publishing tag for event listener stubs to `app/Listeners/Line/`
+**channel_token** - LINE Bot API access token from `config('line.bot.channel_token')` for authenticating Messaging API requests
+
+**channel_secret** - LINE Bot channel secret from `config('line.bot.channel_secret')` used for webhook signature validation
+
+**line-config** - Artisan publishing tag for `config/line.php` configuration file: `php artisan vendor:publish --tag=line-config`
+
+**line-listeners** - Artisan publishing tag for event listener stubs to `app/Listeners/Line/`: `php artisan vendor:publish --tag=line-listeners`
 
 **line-login** - Socialite driver identifier for LINE Login authentication integration
 
-**reply token** - Temporary token from LINE MessageEvent required for sending reply messages within time limit
+**reply token** - Temporary token from LINE MessageEvent required for sending reply messages, valid for limited time after webhook event
 
-**toLine()** - Method expected on Laravel Notification classes returning LineMessage for LINE channel
+**routeNotificationForLine()** - Method that Laravel Notifiable models should implement to return the LINE user/group ID for notifications
 
-**withSender()** - Method on message builders for customizing sender name and icon display
+**toLine()** - Method expected on Laravel Notification classes returning LineMessage instance for LINE notification channel
 
-**withQuickReply()** - Method on message builders for adding interactive quick reply buttons
+**withSender()** - Method on message builders for customizing sender display name and icon URL in LINE messages
 
-**Http::line()** - Custom HTTP client macro providing pre-configured LINE API client with authentication
+**withQuickReply()** - Method on message builders for adding interactive quick reply buttons to LINE messages
 
-**MessagingApiApi** - Core LINE SDK client class wrapped by BotClient for direct API interactions
+**Http::line()** - Custom HTTP client macro providing pre-configured LINE API client with authentication headers and base URL
 
-**PushMessageRequest** - LINE SDK model for constructing push message payloads to specific recipients
+**MessagingApiApi** - Core LINE SDK client class from `linecorp/line-bot-sdk` package, wrapped by BotClient for enhanced functionality
+
+**PushMessageRequest** - LINE SDK model for constructing push message payloads to specific user/group recipients
+
+**ReplyMessageRequest** - LINE SDK model for constructing reply message payloads using reply tokens from webhook events
+
+**TextMessageContent** - LINE SDK model representing text message content from webhook events
+
+**StickerMessageContent** - LINE SDK model representing sticker message content from webhook events
+
+**MessageEvent** - LINE webhook event model representing incoming messages from users
+
+**FollowEvent** - LINE webhook event model representing users following the bot (handled by FollowListener stub)
+
+**JoinEvent** - LINE webhook event model representing bot joining groups/rooms (handled by JoinListener stub)
