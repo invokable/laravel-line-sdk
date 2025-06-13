@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1749791394">
-  <project timestamp="1749791394" name="Clover Coverage">
+<coverage generated="1749791638">
+  <project timestamp="1749791638" name="Clover Coverage">
     <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Contracts/BotFactory.php">
       <metrics loc="20" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
     </file>
