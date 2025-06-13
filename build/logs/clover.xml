@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1749791394">
+  <project timestamp="1749791394" name="Clover Coverage">
+    <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Contracts/BotFactory.php">
+      <metrics loc="20" ncloc="20" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Contracts/WebhookHandler.php">
+      <metrics loc="11" ncloc="11" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+    </file>
+    <package name="Revolution\Line\Facades">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Facades/Bot.php">
+        <class name="Revolution\Line\Facades\Bot" namespace="Revolution\Line\Facades">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="30" type="method" name="getFacadeAccessor" visibility="protected" complexity="1" crap="1" count="11"/>
+        <line num="32" type="stmt" count="11"/>
+        <metrics loc="35" ncloc="23" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Messaging">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Bot.php">
+        <class name="Revolution\Line\Messaging\Bot" namespace="Revolution\Line\Messaging">
+          <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+        </class>
+        <metrics loc="14" ncloc="8" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/BotClient.php">
+        <class name="Revolution\Line\Messaging\BotClient" namespace="Revolution\Line\Messaging">
+          <metrics complexity="6" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
+        </class>
+        <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="13"/>
+        <line num="24" type="stmt" count="13"/>
+        <line num="26" type="method" name="bot" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="28" type="stmt" count="9"/>
+        <line num="31" type="method" name="botUsing" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <line num="35" type="stmt" count="1"/>
+        <line num="47" type="method" name="__call" visibility="public" complexity="2" crap="2" count="2"/>
+        <line num="49" type="stmt" count="2"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <metrics loc="56" ncloc="46" classes="1" methods="4" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/ReplyMessage.php">
+        <class name="Revolution\Line\Messaging\ReplyMessage" namespace="Revolution\Line\Messaging">
+          <metrics complexity="9" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="31" elements="38" coveredelements="38"/>
+        </class>
+        <line num="30" type="method" name="withBot" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="32" type="stmt" count="5"/>
+        <line num="34" type="stmt" count="5"/>
+        <line num="37" type="method" name="withToken" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="39" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="5"/>
+        <line num="47" type="method" name="message" visibility="public" complexity="1" crap="1" count="4"/>
+        <line num="49" type="stmt" count="4"/>
+        <line num="50" type="stmt" count="4"/>
+        <line num="51" type="stmt" count="4"/>
+        <line num="52" type="stmt" count="4"/>
+        <line num="54" type="stmt" count="4"/>
+        <line num="60" type="method" name="text" visibility="public" complexity="3" crap="3" count="2"/>
+        <line num="62" type="stmt" count="2"/>
+        <line num="63" type="stmt" count="2"/>
+        <line num="64" type="stmt" count="2"/>
+        <line num="65" type="stmt" count="2"/>
+        <line num="66" type="stmt" count="2"/>
+        <line num="67" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="2"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="2"/>
+        <line num="74" type="stmt" count="2"/>
+        <line num="75" type="stmt" count="2"/>
+        <line num="77" type="stmt" count="2"/>
+        <line num="83" type="method" name="sticker" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="87" type="stmt" count="1"/>
+        <line num="88" type="stmt" count="1"/>
+        <line num="89" type="stmt" count="1"/>
+        <line num="91" type="stmt" count="1"/>
+        <line num="94" type="method" name="withQuickReply" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="101" type="method" name="withSender" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="103" type="stmt" count="1"/>
+        <line num="105" type="stmt" count="1"/>
+        <metrics loc="108" ncloc="99" classes="1" methods="7" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="31" coveredstatements="31" elements="38" coveredelements="38"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Messaging\Concerns">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Concerns/EventParser.php">
+        <class name="Revolution\Line\Messaging\Concerns\EventParser" namespace="Revolution\Line\Messaging\Concerns">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+        </class>
+        <line num="18" type="method" name="parseEvent" visibility="public" complexity="1" crap="1" count="2"/>
+        <line num="20" type="stmt" count="2"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="23" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="2"/>
+        <line num="25" type="stmt" count="2"/>
+        <line num="26" type="stmt" count="2"/>
+        <line num="28" type="stmt" count="2"/>
+        <metrics loc="31" ncloc="27" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="7" coveredstatements="7" elements="8" coveredelements="8"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Concerns/Replyable.php">
+        <class name="Revolution\Line\Messaging\Concerns\Replyable" namespace="Revolution\Line\Messaging\Concerns">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="10" type="method" name="reply" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="12" type="stmt" count="5"/>
+        <line num="13" type="stmt" count="5"/>
+        <line num="14" type="stmt" count="5"/>
+        <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Messaging\Http\Actions">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Http/Actions/WebhookEventDispatcher.php">
+        <class name="Revolution\Line\Messaging\Http\Actions\WebhookEventDispatcher" namespace="Revolution\Line\Messaging\Http\Actions">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+        </class>
+        <line num="12" type="method" name="__invoke" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="1"/>
+        <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="2" coveredstatements="2" elements="3" coveredelements="3"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Http/Actions/WebhookLogHandler.php">
+        <class name="Revolution\Line\Messaging\Http\Actions\WebhookLogHandler" namespace="Revolution\Line\Messaging\Http\Actions">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
+        </class>
+        <line num="13" type="method" name="__invoke" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="19" type="stmt" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="21" type="stmt" count="1"/>
+        <line num="22" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="26" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="29" type="stmt" count="1"/>
+        <metrics loc="32" ncloc="29" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="10" coveredstatements="10" elements="11" coveredelements="11"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Http/Actions/WebhookNullHandler.php">
+        <class name="Revolution\Line\Messaging\Http\Actions\WebhookNullHandler" namespace="Revolution\Line\Messaging\Http\Actions">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="11" type="method" name="__invoke" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <metrics loc="18" ncloc="17" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Messaging\Http\Controllers">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Http/Controllers/WebhookController.php">
+        <class name="Revolution\Line\Messaging\Http\Controllers\WebhookController" namespace="Revolution\Line\Messaging\Http\Controllers">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+        </class>
+        <line num="10" type="method" name="__invoke" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="12" type="stmt" count="3"/>
+        <metrics loc="15" ncloc="15" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="1" coveredstatements="1" elements="2" coveredelements="2"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Messaging\Http\Middleware">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Messaging/Http/Middleware/ValidateSignature.php">
+        <class name="Revolution\Line\Messaging\Http\Middleware\ValidateSignature" namespace="Revolution\Line\Messaging\Http\Middleware">
+          <metrics complexity="2" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+        </class>
+        <line num="18" type="method" name="handle" visibility="public" complexity="1" crap="1" count="3"/>
+        <line num="20" type="stmt" count="3"/>
+        <line num="22" type="stmt" count="2"/>
+        <line num="24" type="stmt" count="1"/>
+        <line num="32" type="method" name="validateSignature" visibility="protected" complexity="1" crap="1" count="2"/>
+        <line num="34" type="stmt" count="2"/>
+        <line num="35" type="stmt" count="2"/>
+        <line num="36" type="stmt" count="2"/>
+        <line num="37" type="stmt" count="2"/>
+        <line num="38" type="stmt" count="2"/>
+        <metrics loc="41" ncloc="32" classes="1" methods="2" coveredmethods="2" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="10" coveredelements="10"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Notifications">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Notifications/LineChannel.php">
+        <class name="Revolution\Line\Notifications\LineChannel" namespace="Revolution\Line\Notifications">
+          <metrics complexity="3" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+        </class>
+        <line num="15" type="method" name="send" visibility="public" complexity="3" crap="3" count="1"/>
+        <line num="20" type="stmt" count="1"/>
+        <line num="23" type="stmt" count="1"/>
+        <line num="27" type="stmt" count="1"/>
+        <line num="28" type="stmt" count="1"/>
+        <line num="31" type="stmt" count="1"/>
+        <line num="33" type="stmt" count="1"/>
+        <metrics loc="36" ncloc="31" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="6" coveredstatements="6" elements="7" coveredelements="7"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Notifications/LineMessage.php">
+        <class name="Revolution\Line\Notifications\LineMessage" namespace="Revolution\Line\Notifications">
+          <metrics complexity="13" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="42" elements="52" coveredelements="52"/>
+        </class>
+        <line num="30" type="method" name="create" visibility="public" complexity="2" crap="2" count="3"/>
+        <line num="32" type="stmt" count="3"/>
+        <line num="33" type="stmt" count="3"/>
+        <line num="34" type="stmt" count="3"/>
+        <line num="37" type="method" name="withSender" visibility="public" complexity="1" crap="1" count="5"/>
+        <line num="39" type="stmt" count="5"/>
+        <line num="41" type="stmt" count="5"/>
+        <line num="44" type="method" name="withQuickReply" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="46" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="54" type="method" name="text" visibility="public" complexity="1" crap="1" count="9"/>
+        <line num="56" type="stmt" count="9"/>
+        <line num="57" type="stmt" count="9"/>
+        <line num="58" type="stmt" count="9"/>
+        <line num="59" type="stmt" count="9"/>
+        <line num="60" type="stmt" count="9"/>
+        <line num="66" type="method" name="sticker" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="68" type="stmt" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="72" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="79" type="method" name="image" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="81" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="83" type="stmt" count="1"/>
+        <line num="84" type="stmt" count="1"/>
+        <line num="85" type="stmt" count="1"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="92" type="method" name="video" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="94" type="stmt" count="1"/>
+        <line num="95" type="stmt" count="1"/>
+        <line num="96" type="stmt" count="1"/>
+        <line num="97" type="stmt" count="1"/>
+        <line num="98" type="stmt" count="1"/>
+        <line num="99" type="stmt" count="1"/>
+        <line num="105" type="method" name="message" visibility="public" complexity="3" crap="3" count="12"/>
+        <line num="107" type="stmt" count="12"/>
+        <line num="108" type="stmt" count="4"/>
+        <line num="111" type="stmt" count="12"/>
+        <line num="112" type="stmt" count="1"/>
+        <line num="115" type="stmt" count="12"/>
+        <line num="117" type="stmt" count="12"/>
+        <line num="123" type="method" name="with" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="127" type="stmt" count="1"/>
+        <line num="130" type="method" name="toArray" visibility="public" complexity="1" crap="1" count="12"/>
+        <line num="132" type="stmt" count="12"/>
+        <line num="133" type="stmt" count="12"/>
+        <line num="134" type="stmt" count="12"/>
+        <line num="135" type="stmt" count="12"/>
+        <metrics loc="138" ncloc="120" classes="1" methods="10" coveredmethods="10" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="42" elements="52" coveredelements="52"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Providers">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Providers/LineServiceProvider.php">
+        <class name="Revolution\Line\Providers\LineServiceProvider" namespace="Revolution\Line\Providers">
+          <metrics complexity="6" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="25" coveredelements="25"/>
+        </class>
+        <line num="18" type="method" name="register" visibility="public" complexity="1" crap="1" count="33"/>
+        <line num="20" type="stmt" count="33"/>
+        <line num="21" type="stmt" count="33"/>
+        <line num="22" type="stmt" count="33"/>
+        <line num="23" type="stmt" count="33"/>
+        <line num="25" type="stmt" count="33"/>
+        <line num="27" type="stmt" count="33"/>
+        <line num="33" type="method" name="registerBot" visibility="protected" complexity="1" crap="1" count="33"/>
+        <line num="35" type="stmt" count="33"/>
+        <line num="36" type="stmt" count="8"/>
+        <line num="38" type="stmt" count="8"/>
+        <line num="39" type="stmt" count="33"/>
+        <line num="41" type="stmt" count="33"/>
+        <line num="47" type="method" name="registerWebhookHandler" visibility="protected" complexity="1" crap="1" count="33"/>
+        <line num="49" type="stmt" count="33"/>
+        <line num="55" type="method" name="boot" visibility="public" complexity="1" crap="1" count="33"/>
+        <line num="57" type="stmt" count="33"/>
+        <line num="63" type="method" name="configurePublishing" visibility="protected" complexity="2" crap="2" count="33"/>
+        <line num="65" type="stmt" count="33"/>
+        <line num="69" type="stmt" count="33"/>
+        <line num="70" type="stmt" count="33"/>
+        <line num="71" type="stmt" count="33"/>
+        <line num="73" type="stmt" count="33"/>
+        <line num="74" type="stmt" count="33"/>
+        <line num="75" type="stmt" count="33"/>
+        <metrics loc="78" ncloc="62" classes="1" methods="5" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="20" coveredstatements="20" elements="25" coveredelements="25"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Providers/LineSocialiteServiceProvider.php">
+        <class name="Revolution\Line\Providers\LineSocialiteServiceProvider" namespace="Revolution\Line\Providers">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+        </class>
+        <line num="11" type="method" name="boot" visibility="public" complexity="1" crap="1" count="33"/>
+        <line num="13" type="stmt" count="33"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="33"/>
+        <metrics loc="18" ncloc="18" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="3" elements="4" coveredelements="4"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Providers/MacroServiceProvider.php">
+        <class name="Revolution\Line\Providers\MacroServiceProvider" namespace="Revolution\Line\Providers">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+        </class>
+        <line num="11" type="method" name="boot" visibility="public" complexity="1" crap="1" count="33"/>
+        <line num="13" type="stmt" count="33"/>
+        <line num="14" type="stmt" count="1"/>
+        <line num="15" type="stmt" count="1"/>
+        <line num="16" type="stmt" count="33"/>
+        <metrics loc="19" ncloc="19" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="4" elements="5" coveredelements="5"/>
+      </file>
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Providers/RouteServiceProvider.php">
+        <class name="Revolution\Line\Providers\RouteServiceProvider" namespace="Revolution\Line\Providers">
+          <metrics complexity="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+        </class>
+        <line num="12" type="method" name="boot" visibility="public" complexity="1" crap="1" count="33"/>
+        <line num="14" type="stmt" count="33"/>
+        <line num="15" type="stmt" count="33"/>
+        <line num="16" type="stmt" count="33"/>
+        <line num="17" type="stmt" count="33"/>
+        <line num="18" type="stmt" count="33"/>
+        <line num="19" type="stmt" count="33"/>
+        <line num="20" type="stmt" count="33"/>
+        <line num="21" type="stmt" count="33"/>
+        <metrics loc="24" ncloc="24" classes="1" methods="1" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="8" coveredstatements="8" elements="9" coveredelements="9"/>
+      </file>
+    </package>
+    <package name="Revolution\Line\Socialite">
+      <file name="/home/runner/work/laravel-line-sdk/laravel-line-sdk/src/Socialite/LineLoginProvider.php">
+        <class name="Revolution\Line\Socialite\LineLoginProvider" namespace="Revolution\Line\Socialite">
+          <metrics complexity="7" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="31" elements="51" coveredelements="35"/>
+        </class>
+        <line num="51" type="method" name="getAuthUrl" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="59" type="method" name="getTokenUrl" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="61" type="stmt" count="1"/>
+        <line num="67" type="method" name="getAccessTokenResponse" visibility="public" complexity="2" crap="2.00" count="1"/>
+        <line num="69" type="stmt" count="1"/>
+        <line num="70" type="stmt" count="1"/>
+        <line num="71" type="stmt" count="1"/>
+        <line num="73" type="stmt" count="1"/>
+        <line num="75" type="stmt" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="1"/>
+        <line num="80" type="stmt" count="1"/>
+        <line num="82" type="stmt" count="1"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="1"/>
+        <line num="92" type="method" name="getEmail" visibility="protected" complexity="1" crap="2" count="0"/>
+        <line num="94" type="stmt" count="0"/>
+        <line num="95" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="98" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="100" type="stmt" count="0"/>
+        <line num="101" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="105" type="stmt" count="0"/>
+        <line num="106" type="stmt" count="0"/>
+        <line num="108" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
+        <line num="116" type="method" name="getUserByToken" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="118" type="stmt" count="1"/>
+        <line num="119" type="stmt" count="1"/>
+        <line num="120" type="stmt" count="1"/>
+        <line num="121" type="stmt" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <line num="123" type="stmt" count="1"/>
+        <line num="124" type="stmt" count="1"/>
+        <line num="125" type="stmt" count="1"/>
+        <line num="127" type="stmt" count="1"/>
+        <line num="133" type="method" name="mapUserToObject" visibility="protected" complexity="1" crap="1" count="1"/>
+        <line num="135" type="stmt" count="1"/>
+        <line num="136" type="stmt" count="1"/>
+        <line num="137" type="stmt" count="1"/>
+        <line num="138" type="stmt" count="1"/>
+        <line num="139" type="stmt" count="1"/>
+        <line num="140" type="stmt" count="1"/>
+        <line num="141" type="stmt" count="1"/>
+        <line num="142" type="stmt" count="1"/>
+        <line num="143" type="stmt" count="1"/>
+        <metrics loc="146" ncloc="105" classes="1" methods="6" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="45" coveredstatements="31" elements="51" coveredelements="35"/>
+      </file>
+    </package>
+    <metrics files="20" loc="878" ncloc="744" classes="17" methods="45" coveredmethods="43" conditionals="0" coveredconditionals="0" statements="199" coveredstatements="185" elements="244" coveredelements="228"/>
+  </project>
+</coverage>
