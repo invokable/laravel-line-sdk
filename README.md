@@ -36,6 +36,9 @@ composer remove revolution/laravel-line-sdk
 Set up in LINE Developers console.
 https://developers.line.biz/
 
+> **Note**: You can no longer create a Messaging API channel directly from the LINE Developers Console.
+To create a Messaging API channel, first create a LINE Official Account using the [Create LINE Official Account] button. Then, enable Messaging API usage from the LINE Official Account Manager.
+
 Create two channels `Messaging API` and `LINE Login`.
 
 - Messaging API : Get `Channel access token (long-lived)` and `Channel secret`. Set `Webhook URL`
