@@ -2,6 +2,9 @@
 
 I'm not going to write all the changes.
 
+## v4.1.0 (2025-10-22)
+- Update line-bot-sdk v12. Drop v10 support.
+
 ## v4.0.0 (2025-02-23)
 - Laravel 12 support
 - Drop Laravel10/PHP8.1 support
