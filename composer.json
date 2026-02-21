@@ -9,11 +9,11 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-json": "*",
         "laravel/socialite": "^5.0",
-        "illuminate/support": "^11.0||^12.0",
-        "linecorp/line-bot-sdk": "^11.0||^12.0"
+        "illuminate/support": "^12.0||^13.0",
+        "linecorp/line-bot-sdk": "^12.0"
     },
     "require-dev": {
         "orchestra/testbench": "^10.0",
