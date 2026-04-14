@@ -14,11 +14,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 {
     /**
      * Load package service provider.
-     *
-     * @param  Application  $app
-     * @return array
      */
-    protected function getPackageProviders($app)
+    protected function getPackageProviders($app): array
     {
         return [
             LineServiceProvider::class,
@@ -31,11 +28,8 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     /**
      * Load package alias.
-     *
-     * @param  Application  $app
-     * @return array
      */
-    protected function getPackageAliases($app)
+    protected function getPackageAliases($app): array
     {
         return [
             // 'LINE' => Bot::class,
@@ -44,12 +38,9 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
 
     /**
      * Define environment setup.
-     *
-     * @param  Application  $app
-     * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function getEnvironmentSetUp($app): void
     {
-        //
+        $app['config']->set('line.bot.channel_secret', 'token');
     }
 }
