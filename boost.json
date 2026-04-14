@@ -10,6 +10,7 @@
     ],
     "sail": false,
     "skills": [
-        "laravel-best-practices"
+        "laravel-best-practices",
+        "socialite-development"
     ]
 }
