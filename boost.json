@@ -1,0 +1,15 @@
+{
+    "agents": [
+        "copilot-cli"
+    ],
+    "guidelines": true,
+    "mcp": true,
+    "nightwatch_mcp": false,
+    "packages": [
+        "revolution/laravel-boost-copilot-cli"
+    ],
+    "sail": false,
+    "skills": [
+        "laravel-best-practices"
+    ]
+}
