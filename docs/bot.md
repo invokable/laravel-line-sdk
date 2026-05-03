@@ -215,7 +215,7 @@ use Revolution\Line\Contracts\WebhookHandler;
 
 public function register()
 {
-    $this->app->singleton(WebhookHandler::class, LineWebhook::class);
+    $this->app->scoped(WebhookHandler::class, LineWebhook::class);
 }
 ```
 
